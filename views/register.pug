@@ -1,0 +1,38 @@
+extends layouts/login-layout.pug
+
+block content
+  div.loginContainer
+    h1 Register
+    form#registerForm(method="post", onsubmit="event.preventDefault(); validateMatchPassword();")
+      p(class=error ? "general-error" : "") #{error}
+      p(class="error-message-register") #{firstName}
+      input(type="text", name="firstName", placeholder="First name", required="" class= firstName ? "form-control is-invalid" : "") 
+
+      p(class="error-message-register") #{lastName}
+      input(type="text", name="lastName", placeholder="Last name", required="" value="Albuquerque" class= lastName ? "form-control is-invalid" : "")
+
+      p(class="error-message-register") #{username}
+      input(type="text", name="username", placeholder="username", required="" value="" class= username ? "form-control is-invalid" : "")
+
+      p(class="error-message-register") #{email}
+      input(type="email", name="email", placeholder="Email", required="" value="leeodesign@hotmail.com" class= email ? "form-control is-invalid" : "") 
+
+      p(class="error-message-register") #{password}
+      input#password(type="password", name="password", placeholder="Password", required="" value="asd" class= password ? "form-control is-invalid" : "") 
+
+      p(class="error-message-register") #{confirmPassword}
+      input#confirmPassword(type="password", name="confirmPassword", placeholder="Confirm password", required="" value="asd" class= confirmPassword ? "form-control is-invalid" : "") 
+      input(type="submit", value="Register")
+    p Already have an account? Login 
+      a(href="/login") here.
+  script.
+    const password = document.querySelector("#password");
+    const confirmPassword = document.querySelector("#confirmPassword");
+    const formRegister = document.querySelector("#registerForm");
+    function validateMatchPassword(){
+      if(password.value !== confirmPassword.value){
+        alert("Password do no match. Please try again");
+      }else{
+        formRegister.submit();
+      }
+    }
