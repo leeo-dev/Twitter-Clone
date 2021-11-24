@@ -9,19 +9,19 @@ block content
       input(type="text", name="firstName", placeholder="First name", required="" class= firstName ? "form-control is-invalid" : "") 
 
       p(class="error-message-register") #{lastName}
-      input(type="text", name="lastName", placeholder="Last name", required="" value="Albuquerque" class= lastName ? "form-control is-invalid" : "")
+      input(type="text", name="lastName", placeholder="Last name", required=""  class= lastName ? "form-control is-invalid" : "")
 
       p(class="error-message-register") #{username}
-      input(type="text", name="username", placeholder="username", required="" value="" class= username ? "form-control is-invalid" : "")
+      input(type="text", name="username", placeholder="username", required="" class= username ? "form-control is-invalid" : "")
 
       p(class="error-message-register") #{email}
-      input(type="email", name="email", placeholder="Email", required="" value="leeodesign@hotmail.com" class= email ? "form-control is-invalid" : "") 
+      input(type="email", name="email", placeholder="Email", required="" class= email ? "form-control is-invalid" : "") 
 
       p(class="error-message-register") #{password}
-      input#password(type="password", name="password", placeholder="Password", required="" value="asd" class= password ? "form-control is-invalid" : "") 
+      input#password(type="password", name="password", placeholder="Password", required="" class= password ? "form-control is-invalid" : "") 
 
       p(class="error-message-register") #{confirmPassword}
-      input#confirmPassword(type="password", name="confirmPassword", placeholder="Confirm password", required="" value="asd" class= confirmPassword ? "form-control is-invalid" : "") 
+      input#confirmPassword(type="password", name="confirmPassword", placeholder="Confirm password", required="" class= confirmPassword ? "form-control is-invalid" : "") 
       input(type="submit", value="Register")
     p Already have an account? Login 
       a(href="/login") here.

@@ -3,6 +3,7 @@ const { join } = require("path");
 const route = require("./routes");
 const app = express();
 const PORT = 3000;
+const dbConfig = require("./dbconfig");
 
 app.set("view engine", "pug");
 app.set("views", join(__dirname, "views"));
