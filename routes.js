@@ -1,6 +1,8 @@
 const express = require("express");
 const middleware = require("./middleware");
 const User = require("./schemas/UserSchema");
+const bcrypt = require("bcrypt");
+
 const DEFAULT_OPTION = {
   minLength: 3,
   maxLength: 25,
@@ -55,8 +57,12 @@ route.post("/register", async (request, response) => {
     if (isThereAnyUsernameOrEmail)
       throw new Error(["error", "E-mail or username in use"]);
 
-    const user = await User.create(newUser);
-    console.log(user);
+    const user = await User.create({
+      ...newUser,
+      password: await bcrypt.hash(newUser.password, 10),
+    });
+    request.session.user = user;
+    return response.redirect("/");
   } catch (error) {
     const arrayError = error.message.split(",");
     const objectError = Object.fromEntries([arrayError]);
@@ -68,7 +74,8 @@ route.post("/register", async (request, response) => {
 });
 
 route.get("/", middleware.requireLogin, (request, response) => {
-  const payLoad = { title: "Home" };
+  console.log(request.session.user);
+  const payLoad = { title: "Home", userLoggedIn: request.session.user };
   response.status(200).render("home", payLoad);
 });
 

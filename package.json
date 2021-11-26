@@ -18,7 +18,9 @@
   },
   "homepage": "https://github.com/leeodesign/twitter-clone#readme",
   "dependencies": {
+    "bcrypt": "^5.0.1",
     "express": "^4.17.1",
+    "express-session": "^1.17.2",
     "mongodb": "^4.2.0",
     "mongoose": "^6.0.13",
     "pug": "^3.0.2"
